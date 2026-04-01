@@ -1,0 +1,22 @@
+
+/* スマホに対応する */
+/* PCなど広い画面用のスタイル */
+.container {
+  display: flex;
+}
+
+/* 画面幅が768px以下（一般的なスマホ・タブレット）になった時の指定 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* 縦並びに変える */
+  }
+  
+  body {
+    font-size: 14px; /* 文字を少し小さくする */
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
