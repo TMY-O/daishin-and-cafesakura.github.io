@@ -1,3 +1,4 @@
+<!-- スマホ用の互換性を持たせる -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,6 +11,7 @@
 <header>
   <h1><img src="images/ロゴ.png" width="274" height="50" alt="ダイシン＆かふぇさくら"></h1>
   <nav>
+	  <!-- ハンバーガーメニューにする -->
 		<ul> 
 			<li><a href=""><alt="取扱商品"></a></li>
         <nav>
@@ -24,3 +26,34 @@
 		</ul>
 	</nav>
 </header>
+<div id="main">
+		<p><img src="イメージ入れる" width="580" height="387" alt="ダイシン＆かふぇさくらの外観"></p>
+</div>
+
+<h2>今月の休日</h2>
+<div id="closed_day">
+	<script>
+  fetch('closed_day.txt')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('holiday-announcement').innerText = data;
+    });
+</script>
+</div>
+
+<h2>アクセス</h2>
+<div id="access">
+	<!-- グーグルマップのリンク -->
+	<p>電話番号　0225-53-2334</p>
+	<p>住所　宮城県牡鹿郡女川町女川2丁目5-10</p>
+</div>
+
+<footer>
+	<p><small>Copyright 2026 daishin-and-cafesakura All rights reserved.</small></p>
+</footer>
+</body>
+</html>
+
+
+	
+	
