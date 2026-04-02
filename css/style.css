@@ -75,3 +75,21 @@ img {
 }
 
 .navigation ul li { margin: 20px 0; }
+
+/* マップを囲む枠の設定 */
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9の比率で表示 */
+  margin-top: 20px;
+}
+
+/* マップ本体の設定 */
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
