@@ -1,4 +1,3 @@
-<!-- スマホ用の互換性を持たせる -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,50 +10,66 @@
 <body>
 <header>
   <h1><img src="images/ロゴ.png" width="274" height="50" alt="ダイシン＆かふぇさくら"></h1>
-  <nav>
-	  <!-- ハンバーガーメニューにする -->
-		<ul> 
-			<li><a href=""><alt="取扱商品"></a></li>
-        <nav>
-          <li><a href="goods.html"><alt="婦人服・雑貨"></a></li>
-          <li><a href="candy.html"><alt="駄菓子"></a></li>
-          <li><a href="uniform.html"><alt="町内学用品"></a></li>
-          <li><a href="lymphatic＿massage.html"><alt="リンパマッサージ"></a></li>
-          <li><a href="Medical＿aromatherapy.html"><alt="メディカルアロマ"></a></li>
-        </nav>
-			<li><a href="cage.html"><alt="かふぇさくら"></a></li>
-			<li><a href="zizo_street.html"><alt="桜地蔵通り"></a></li>
-		</ul>
-	</nav>
+  
+  <div class="hamburger" id="js-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="navigation" id="js-navigation">
+    <ul> 
+      <li><a href="goods.html">婦人服・雑貨</a></li>
+      <li><a href="candy.html">駄菓子</a></li>
+      <li><a href="uniform.html">町内学用品</a></li>
+      <li><a href="lymphatic_massage.html">リンパマッサージ</a></li>
+      <li><a href="Medical_aromatherapy.html">メディカルアロマ</a></li>
+      <li><a href="cafe.html">かふぇさくら</a></li>
+      <li><a href="zizo_street.html">桜地蔵通り</a></li>
+    </ul>
+  </nav>
 </header>
+
 <div id="main">
-		<p><img src="イメージ入れる" width="580" height="387" alt="ダイシン＆かふぇさくらの外観"></p>
+    <p><img src="images/main_visual.jpg" width="580" height="387" alt="ダイシン＆かふぇさくらの外観"></p>
 </div>
 
 <h2>今月の休日</h2>
-<div id="closed_day">
-	<script>
-  fetch('closed_day.txt')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('holiday-announcement').innerText = data;
-    });
-</script>
+<div id="holiday-announcement">
+  読み込み中...
 </div>
 
 <h2>アクセス</h2>
 <div id="access">
-	<!-- グーグルマップのリンク -->
-	<p>電話番号　0225-53-2334</p>
-	<p>住所　宮城県牡鹿郡女川町女川2丁目5-10</p>
+  <p>電話番号　0225-53-2334</p>
+  <p>住所　宮城県牡鹿郡女川町女川2丁目5-10</p>
 </div>
 
 <footer>
-	<p><small>Copyright 2026 daishin-and-cafesakura All rights reserved.</small></p>
+  <p><small>Copyright 2026 daishin-and-cafesakura All rights reserved.</small></p>
 </footer>
+
+<script>
+  fetch('closed_day.txt')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('holiday-announcement').innerText = data;
+    })
+    .catch(error => {
+      document.getElementById('holiday-announcement').innerText = "休日の取得に失敗しました。";
+    });
+
+  // ハンバーガーメニュー制御
+  const hamburger = document.getElementById('js-hamburger');
+  const navigation = document.getElementById('js-navigation');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navigation.classList.toggle('active');
+  });
+</script>
 </body>
 </html>
-
 
 	
 	
