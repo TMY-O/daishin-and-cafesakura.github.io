@@ -99,6 +99,69 @@ img {
   background: rgba(0, 0, 0, 0.05);
 }
 
+/* ④ボタンと写真を横並びにする設定 */
+.header-left-group {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* ボタンと写真の間隔 */
+}
+
+/* ボタン横の小さな写真 */
+.header-small-photo {
+  width: 40px;  /* お好みのサイズに調整してください */
+  height: 40px;
+  border-radius: 50%; /* 丸くする場合 */
+  object-fit: cover;
+}
+
+/* ①③メニューの出現位置と挙動 */
+.navigation {
+  position: absolute;
+  top: 60px; /* ボタンの真下 */
+  left: 0;   /* 左側に揃える */
+  width: auto;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  z-index: 110;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.navigation.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ②メニュー内の一番上の×ボタン */
+.menu-close-wrapper {
+  border-bottom: 1px solid #eee;
+  padding: 10px 15px;
+  text-align: right;
+}
+
+.menu-close-button {
+  cursor: pointer;
+  font-size: 14px;
+  color: #888;
+  font-weight: bold;
+}
+
+.menu-close-button:hover {
+  color: #333;
+}
+
+/* 三本線ボタンはメニューが開いている間は非表示にする */
+.hamburger.hidden {
+  display: none;
+}
+
 /* --- 4. コンテンツ・Googleマップ設定 --- */
 #main, #holiday-announcement, #access, .map-container {
   max-width: 800px;
