@@ -75,12 +75,29 @@
 
   // ハンバーガーメニュー制御
   const hamburger = document.getElementById('js-hamburger');
-  const navigation = document.getElementById('js-navigation');
+const navigation = document.getElementById('js-navigation');
+const menuClose = document.getElementById('js-menu-close');
+const menuLinks = document.querySelectorAll('.navigation a');
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navigation.classList.toggle('active');
+// ハンバーガー（三本線）をクリックした時
+hamburger.addEventListener('click', () => {
+  navigation.classList.add('active');
+  hamburger.classList.add('hidden'); // ①三本線ボタンを隠す
+});
+
+// メニュー内の「× 閉じる」をクリックした時
+menuClose.addEventListener('click', () => {
+  navigation.classList.remove('active');
+  hamburger.classList.remove('hidden'); // ボタンを再表示
+});
+
+// ①メニュー内のリンクを選択した時もメニューを閉じる
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navigation.classList.remove('active');
+    hamburger.classList.remove('hidden');
   });
+});
 </script>
 </body>
 </html>
