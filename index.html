@@ -64,17 +64,6 @@
 </footer>
 
 <script>
-  // 休日情報の読み込み
-  fetch('closed_day.txt')
-    .then(response => response.text())
-    .then(data => {
-      const element = document.getElementById('holiday-announcement');
-      if (element) element.innerText = data;
-    })
-    .catch(error => {
-      const element = document.getElementById('holiday-announcement');
-      if (element) element.innerText = "休日の取得に失敗しました。";
-    });
 
   // ハンバーガーメニュー制御
   const hamburger = document.getElementById('js-hamburger');
