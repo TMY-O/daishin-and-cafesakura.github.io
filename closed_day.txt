@@ -39,6 +39,9 @@
 </header>
 
 <div id="main">
+<img src="images/婦人服雑貨.png" width="580" height="387" alt="婦人服雑貨">
+	<p>女川で親しまれた婦人服の店ダイシン。</p>
+	<p>気分が楽しくなるような一品が見つかるはずです。</p>
 </div>
 
 <footer>
