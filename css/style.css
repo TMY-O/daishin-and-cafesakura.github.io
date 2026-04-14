@@ -207,3 +207,41 @@ h2 {
     flex-direction: column;
   }
 }
+
+/* --- ① Google Mapのサイズ調整 --- */
+.map-container {
+  max-width: 580px; /* 店先の写真（580px）と同じ最大幅に制限 */
+  margin: 0 auto;   /* 中央寄せ */
+  padding: 0 20px;  /* スマホ時の左右の隙間 */
+  /* 比率固定の設定がもし残っていたら、高さを直接指定する形に変えます */
+}
+
+.map-container iframe {
+  width: 100% !important;
+  height: 387px !important; /* 店先の写真（387px）と同じ高さに設定 */
+  border-radius: 8px;       /* 写真に合わせて少し角を丸くすると統一感が出ます */
+}
+
+/* --- ② 電話番号と住所の配置 --- */
+#access {
+  display: flex;
+  justify-content: center; /* 枠自体を中央に寄せる */
+  padding: 20px;
+  text-align: left;        /* 中身の文字は左寄せにする */
+}
+
+.access-inner {
+  display: inline-block;   /* 中身の幅に合わせる */
+}
+
+#access p {
+  margin: 10px 0;
+  display: flex;           /* ラベルと内容を横に並べる */
+  line-height: 1.6;
+}
+
+#access p span {
+  display: inline-block;
+  width: 5em;              /* 「電話番号」「住所」のラベル幅を固定して開始位置を揃える */
+  flex-shrink: 0;          /* 幅を縮ませない */
+}
