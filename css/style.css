@@ -1,286 +1,57 @@
-/* --- 1. 基本レイアウト設定 --- */
+/* --- 1. 基本設定 --- */
 body {
   margin: 0;
   padding: 0;
-  text-align: center; /* 全体を中央寄せ */
+  text-align: center;
   font-size: 16px;
   color: #333;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 img {
   max-width: 100%;
   height: auto;
+  vertical-align: bottom;
 }
 
-/* --- 2. ヘッダー構成（左ボタン・中央ロゴ） --- */
+/* --- 2. ヘッダー構成（左にボタン・中央にロゴ） --- */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 10px 0;
-}
-
-.header-container h1 {
-  margin: 0;
-}
-
-/* ハンバーガーボタン（左固定） */
-.hamburger {
-  position: absolute;
-  left: 20px;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-  z-index: 100;
-}
-
-.hamburger span {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #333;
-  transition: all 0.4s;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 10px; }
-.hamburger span:nth-child(3) { top: 20px; }
-
-/* ボタン変形：×印 */
-.hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(-45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(45deg); }
-
-/* --- 3. コンパクトなナビゲーションメニュー --- */
-.navigation {
-  position: absolute;
-  top: 50px;         /* ボタンのすぐ下 */
-  left: 10px;        /* ボタンに近い左側 */
-  width: auto;
-  min-width: 180px;
-  background: rgba(255, 255, 255, 0.85); /* 半透明の白 */
-  backdrop-filter: blur(8px);           /* 背景ぼかし */
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  z-index: 90;
-  pointer-events: auto; /* クリックを確実に受け取れるようにする */
-  
-  /* 初期状態（隠す） */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-}
-
-.navigation.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.navigation ul {
-  list-style: none;
-  padding: 10px 0;
-  margin: 0;
-  text-align: left; /* リスト内は左寄せ */
-}
-
-.navigation ul li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-  padding: 12px 20px;
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-.navigation ul li a:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-/* ④ボタンと写真を横並びにする設定 */
-.header-left-group {
-  position: absolute;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px; /* ボタンと写真の間隔 */
-}
-
-/* ボタン横の小さな写真 */
-.header-small-photo {
-  width: 40px;  /* お好みのサイズに調整してください */
-  height: 40px;
-  border-radius: 50%; /* 丸くする場合 */
-  object-fit: cover;
-}
-
-/* ①③メニューの出現位置と挙動 */
-.navigation {
-  position: absolute;
-  top: 60px; /* ボタンの真下 */
-  left: 0;   /* 左側に揃える */
-  width: auto;
-  min-width: 200px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  z-index: 110;
-  
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
-}
-
-.navigation.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ②メニュー内の一番上の×ボタン */
-.menu-close-wrapper {
-  border-bottom: 1px solid #eee;
-  padding: 10px 15px;
-  text-align: right;
-}
-
-.menu-close-button {
-  cursor: pointer;
-  font-size: 14px;
-  color: #888;
-  font-weight: bold;
-}
-
-.menu-close-button:hover {
-  color: #333;
-}
-
-/* 三本線ボタンはメニューが開いている間は非表示にする */
-.hamburger.hidden {
-  display: none;
-}
-
-/* --- 4. コンテンツ・Googleマップ設定 --- */
-#main, #holiday-announcement, #access, .map-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h2 {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* マップをレスポンシブ（16:9）にする設定 */
-.map-container {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; 
-  margin-top: 20px;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  border: none;
-}
-
-/* --- 5. レスポンシブ（スマホ・タブレット対応） --- */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
-  .header-container h1 img {
-    width: 80%; /* ロゴをスマホ画面に合わせて少し縮小 */
-  }
-
-  /* コンテナを縦並びにする設定が必要な場合 */
-  .container {
-    flex-direction: column;
-  }
-}
-
-/* --- ① Google Mapのサイズ調整 --- */
-.map-container {
-  max-width: 580px; /* 店先の写真（580px）と同じ最大幅に制限 */
-  margin: 0 auto;   /* 中央寄せ */
-  padding: 0 20px;  /* スマホ時の左右の隙間 */
-  /* 比率固定の設定がもし残っていたら、高さを直接指定する形に変えます */
-}
-
-.map-container iframe {
-  width: 100% !important;
-  height: 387px !important; /* 店先の写真（387px）と同じ高さに設定 */
-  border-radius: 8px;       /* 写真に合わせて少し角を丸くすると統一感が出ます */
-}
-
-/* --- ② 電話番号と住所の配置 --- */
-#access {
-  display: flex;
-  justify-content: center; /* 枠自体を中央に寄せる */
-  padding: 20px;
-  text-align: left;        /* 中身の文字は左寄せにする */
-}
-
-.access-inner {
-  display: inline-block;   /* 中身の幅に合わせる */
-}
-
-#access p {
-  margin: 10px 0;
-  display: flex;           /* ラベルと内容を横に並べる */
-  line-height: 1.6;
-}
-
-#access p span {
-  display: inline-block;
-  width: 5em;              /* 「電話番号」「住所」のラベル幅を固定して開始位置を揃える */
-  flex-shrink: 0;          /* 幅を縮ませない */
-}
-
-/* --- ヘッダー全体のレイアウト --- */
-.header-container {
-  display: flex;
-  align-items: center; /* 上下中央 */
-  justify-content: center; /* 左右中央（ロゴを真ん中に） */
-  position: relative;
   padding: 10px;
   min-height: 80px;
 }
 
-/* --- ロゴのサイズ調整（スマホ対応） --- */
+/* ロゴのサイズ：レスポンシブ */
 .header-logo {
-  max-width: 250px; /* スマホでは小さく表示 */
+  max-width: 250px; /* スマホ用 */
   height: auto;
 }
 
 @media (min-width: 768px) {
   .header-logo {
-    max-width: 500px; /* パソコンでは大きく表示 */
+    max-width: 500px; /* PC用 */
   }
 }
 
-/* --- ハンバーガーボタンの配置 --- */
+/* 左側のグループ（ボタンと小さな写真） */
 .header-left-group {
   position: absolute;
-  left: 15px; /* 左端に固定 */
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
   z-index: 100;
 }
 
-/* --- 三本線そのもののCSS（これがないと見えない・動かない） --- */
+/* ハンバーガー三本線のデザイン */
 .hamburger {
   width: 30px;
-  height: 25px;
+  height: 22px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -291,34 +62,117 @@ h2 {
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #333; /* 三本線の色 */
+  background-color: #333;
   transition: 0.3s;
 }
 
-/* JavaScriptで追加されるクラス */
+/* メニューが開いている時に三本線を隠す */
 .hamburger.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-/* --- メニューの出現位置 --- */
+/* --- 3. ナビゲーションメニュー（全画面・スマホ対応） --- */
 .navigation {
-  position: fixed; /* 画面全体に固定 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   z-index: 200;
-  
-  /* 最初は隠しておく */
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  overflow-y: auto;
 }
 
 .navigation.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* メニュー内のレイアウト */
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.menu-close-wrapper {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: right;
+}
+
+.menu-close-button {
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  font-weight: bold;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 18px 25px;
+  border-bottom: 1px solid #f9f9f9;
+  font-size: 16px;
+}
+
+/* --- 4. コンテンツエリア --- */
+main, #holiday-announcement, #access, .facebook-container {
+  max-width: 580px; /* 店先の写真の幅に統一 */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 50px;
+  font-size: 1.4rem;
+}
+
+/* --- 5. Googleマップ設定 --- */
+.map-container {
+  max-width: 580px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.map-container iframe {
+  width: 100% !important;
+  height: 387px !important; /* 写真と同じ高さ */
+  border: none;
+  border-radius: 8px;
+}
+
+/* --- 6. アクセス情報の配置 --- */
+#access {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  padding-bottom: 60px;
+}
+
+.access-inner p {
+  margin: 12px 0;
+  display: flex;
+  line-height: 1.6;
+}
+
+.access-inner p span {
+  display: inline-block;
+  width: 5.5em; /* ラベルの幅を固定 */
+  color: #666;
+  flex-shrink: 0;
+}
+
+/* --- 7. フッター --- */
+footer {
+  background-color: #f4f4f4;
+  padding: 20px 0;
+  margin-top: 40px;
 }
