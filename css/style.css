@@ -14,7 +14,7 @@ img {
   vertical-align: bottom;
 }
 
-/* --- 2. ヘッダー構成（左にボタン・中央にロゴ） --- */
+/* --- 2. ヘッダー構成 --- */
 .header-container {
   display: flex;
   align-items: center;
@@ -24,7 +24,6 @@ img {
   min-height: 80px;
 }
 
-/* ロゴのサイズ：レスポンシブ */
 .header-logo {
   max-width: 250px; /* スマホ用 */
   height: auto;
@@ -36,7 +35,6 @@ img {
   }
 }
 
-/* 左側のグループ（ボタンと小さな写真） */
 .header-left-group {
   position: absolute;
   left: 15px;
@@ -48,7 +46,6 @@ img {
   z-index: 100;
 }
 
-/* ハンバーガー三本線のデザイン */
 .hamburger {
   width: 30px;
   height: 22px;
@@ -66,14 +63,9 @@ img {
   transition: 0.3s;
 }
 
-/* メニューが開いている時に三本線を隠す */
-.hamburger.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
+/* --- 3. ナビゲーションメニュー（レスポンシブ統合版） --- */
 
-/* --- 3. ナビゲーションメニュー（全画面・スマホ対応） --- */
+/* 【基本：スマホ向け全画面設定】 */
 .navigation {
   position: fixed;
   top: 0;
@@ -88,12 +80,39 @@ img {
   overflow-y: auto;
 }
 
+/* 【PC向け：コンパクト設定に上書き】 */
+@media (min-width: 768px) {
+  .navigation {
+    position: absolute; /* 固定解除 */
+    top: 70px;          /* ボタンの下に配置 */
+    left: 15px;
+    width: auto;
+    height: auto;
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 1px solid #eee;
+    transform: translateY(-10px);
+  }
+  
+  .menu-close-wrapper {
+    display: none; /* PC版では「閉じる」を隠す */
+  }
+}
+
+/* メニュー活性化状態 */
 .navigation.active {
   opacity: 1;
   visibility: visible;
 }
 
-/* メニュー内のレイアウト */
+@media (min-width: 768px) {
+  .navigation.active {
+    transform: translateY(0);
+  }
+}
+
+/* メニュー内レイアウト */
 .navigation ul {
   list-style: none;
   padding: 0;
@@ -123,19 +142,13 @@ img {
   font-size: 16px;
 }
 
-/* --- 4. コンテンツエリア --- */
+/* --- 4. コンテンツ・マップ・アクセス（共通） --- */
 main, #holiday-announcement, #access, .facebook-container {
-  max-width: 580px; /* 店先の写真の幅に統一 */
+  max-width: 580px;
   margin: 0 auto;
   padding: 20px;
 }
 
-h2 {
-  margin-top: 50px;
-  font-size: 1.4rem;
-}
-
-/* --- 5. Googleマップ設定 --- */
 .map-container {
   max-width: 580px;
   margin: 20px auto;
@@ -144,12 +157,11 @@ h2 {
 
 .map-container iframe {
   width: 100% !important;
-  height: 387px !important; /* 写真と同じ高さ */
+  height: 387px !important;
   border: none;
   border-radius: 8px;
 }
 
-/* --- 6. アクセス情報の配置 --- */
 #access {
   display: flex;
   justify-content: center;
@@ -157,20 +169,13 @@ h2 {
   padding-bottom: 60px;
 }
 
-.access-inner p {
-  margin: 12px 0;
-  display: flex;
-  line-height: 1.6;
-}
-
 .access-inner p span {
   display: inline-block;
-  width: 5.5em; /* ラベルの幅を固定 */
+  width: 5.5em;
   color: #666;
   flex-shrink: 0;
 }
 
-/* --- 7. フッター --- */
 footer {
   background-color: #f4f4f4;
   padding: 20px 0;
