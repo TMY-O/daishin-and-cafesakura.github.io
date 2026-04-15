@@ -39,6 +39,10 @@
 </header>
 
 <div id="main">
+	<h2>さくら咲く地蔵</h2>
+	
+
+	
 </div>
 
 <footer>
@@ -46,14 +50,6 @@
 </footer>
 
 <script>
-  fetch('closed_day.txt')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('holiday-announcement').innerText = data;
-    })
-    .catch(error => {
-      document.getElementById('holiday-announcement').innerText = "休日の取得に失敗しました。";
-    });
 
   // ハンバーガーメニュー制御
   const hamburger = document.getElementById('js-hamburger');
