@@ -181,3 +181,58 @@ footer {
   padding: 20px 0;
   margin-top: 40px;
 }
+
+/* ストーリー全体のコンテナ */
+.story-container {
+  max-width: 1000px; /* 少し広めに設定 */
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* 各段の基本設定（スマホでは縦並び） */
+.story-row {
+  display: flex;
+  flex-direction: column; /* スマホでは縦に並べる */
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 80px; /* 段ごとの間隔 */
+}
+
+.story-photo, .story-text {
+  width: 100%;
+}
+
+.story-text {
+  text-align: left; /* 文章は左寄せで見やすく */
+  padding: 0 10px;
+}
+
+/* 【PC版の設定：768px以上で横並び & 互い違いにする】 */
+@media (min-width: 768px) {
+  .story-row {
+    flex-direction: row; /* 横並びにする */
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .story-photo, .story-text {
+    width: 48%; /* 左右ほぼ半分ずつ */
+  }
+
+  /* 偶数番目（2, 4, 6...段目）の左右を入れ替える */
+  .story-row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .story-text {
+    padding: 20px;
+  }
+}
+
+/* 写真の装飾（お好みで） */
+.story-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
