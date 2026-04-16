@@ -236,3 +236,22 @@ footer {
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* 物語を締めくくる最後の一枚用 */
+.story-final {
+  display: block; /* 横並び設定を解除 */
+  width: 100%;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.story-final .story-photo {
+  width: 100% !important; /* PC版の48%指定を上書き */
+  max-width: 500px;      /* PCでは最大500pxに制限 */
+  margin: 0 auto;        /* 中央寄せ */
+}
+
+.story-final img {
+  width: 100%;           /* 枠に合わせて広がる（スマホでは画面幅に合わせる） */
+  height: auto;
+}
