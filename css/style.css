@@ -130,6 +130,9 @@ h1 img {
   font-weight: bold;
 }
 
+/* --- 3. ナビゲーションメニュー（修正版） --- */
+
+/* メニュー内のリンク設定 */
 .navigation ul li a {
   text-decoration: none;
   color: #333;
@@ -137,6 +140,43 @@ h1 img {
   padding: 18px 25px;
   border-bottom: 1px solid #f9f9f9;
   font-size: 16px;
+  transition: background-color 0.3s, color 0.3s; /* ①色変化を滑らかに */
+}
+
+/* ①ホバー時に薄水色にする */
+.navigation ul li a:hover {
+  background-color: #f0faff; /* 薄い水色 */
+  color: #0077b6;            /* 文字色も少し濃い青に */
+}
+
+/* ②×ボタンの装飾 */
+.menu-close-wrapper {
+  padding: 15px 20px;
+  text-align: right; /* 右上に配置 */
+}
+
+.menu-close-button {
+  cursor: pointer;
+  font-size: 32px;    /* 大きく見やすく */
+  line-height: 1;
+  color: #999;
+  display: inline-block;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+/* ×ボタンもホバーで反応させる */
+.menu-close-button:hover {
+  color: #333;
+  transform: rotate(90deg); /* 遊び心で少し回転 */
+}
+
+/* PC版での「閉じる」表示設定を解除 */
+@media (min-width: 768px) {
+  /* PC版でも×ボタンを表示したままにする場合は display: none を削除 */
+  .menu-close-wrapper {
+    display: block; 
+  }
 }
 
 /* --- 4. 桜咲く地蔵 ストーリーセクション --- */
