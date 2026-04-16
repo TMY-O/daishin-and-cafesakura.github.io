@@ -255,3 +255,39 @@ footer {
   width: 100%;           /* 枠に合わせて広がる（スマホでは画面幅に合わせる） */
   height: auto;
 }
+
+@media (min-width: 768px) {
+  /* 1. 写真と文章の「親要素」の設定 */
+  .story-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* 上端を揃える（重要！） */
+    align-items: flex-start; 
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+
+  /* 2. 文章の「書き出し」の余白を消す */
+  .story-text p {
+    /* ブラウザが自動で入れる上の隙間をゼロにする */
+    margin-top: 0; 
+    /* 行間を整えて読みやすくする */
+    line-height: 1.8; 
+  }
+
+  /* 写真のカラム幅（前回調整した通り） */
+  .story-photo {
+    width: 60%;
+  }
+
+  /* 文章のカラム幅（前回調整した通り） */
+  .story-text {
+    width: 38%;
+  }
+
+  /* 偶数段の入れ替え設定 */
+  .story-row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
