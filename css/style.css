@@ -24,14 +24,15 @@ img {
   min-height: 80px;
 }
 
-.header-logo {
-  max-width: 250px; /* スマホ用 */
+/* ロゴのレスポンシブ設定 */
+h1 img {
+  max-width: 250px; /* スマホデフォルト */
   height: auto;
 }
 
 @media (min-width: 768px) {
-  .header-logo {
-    max-width: 500px; /* PC用 */
+  h1 img {
+    max-width: 500px; /* PCサイズ */
   }
 }
 
@@ -63,9 +64,12 @@ img {
   transition: 0.3s;
 }
 
-/* --- 3. ナビゲーションメニュー（レスポンシブ統合版） --- */
+.hamburger.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
-/* 【基本：スマホ向け全画面設定】 */
+/* --- 3. ナビゲーションメニュー --- */
 .navigation {
   position: fixed;
   top: 0;
@@ -80,11 +84,15 @@ img {
   overflow-y: auto;
 }
 
-/* 【PC向け：コンパクト設定に上書き】 */
+.navigation.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media (min-width: 768px) {
   .navigation {
-    position: absolute; /* 固定解除 */
-    top: 70px;          /* ボタンの下に配置 */
+    position: absolute;
+    top: 70px;
     left: 15px;
     width: auto;
     height: auto;
@@ -94,25 +102,14 @@ img {
     border: 1px solid #eee;
     transform: translateY(-10px);
   }
-  
-  .menu-close-wrapper {
-    display: none; /* PC版では「閉じる」を隠す */
-  }
-}
-
-/* メニュー活性化状態 */
-.navigation.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-@media (min-width: 768px) {
   .navigation.active {
     transform: translateY(0);
   }
+  .menu-close-wrapper {
+    display: none;
+  }
 }
 
-/* メニュー内レイアウト */
 .navigation ul {
   list-style: none;
   padding: 0;
@@ -142,60 +139,19 @@ img {
   font-size: 16px;
 }
 
-/* --- 4. コンテンツ・マップ・アクセス（共通） --- */
-main, #holiday-announcement, #access, .facebook-container {
-  max-width: 580px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.map-container {
-  max-width: 580px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-.map-container iframe {
-  width: 100% !important;
-  height: 387px !important;
-  border: none;
-  border-radius: 8px;
-}
-
-#access {
-  display: flex;
-  justify-content: center;
-  text-align: left;
-  padding-bottom: 60px;
-}
-
-.access-inner p span {
-  display: inline-block;
-  width: 5.5em;
-  color: #666;
-  flex-shrink: 0;
-}
-
-footer {
-  background-color: #f4f4f4;
-  padding: 20px 0;
-  margin-top: 40px;
-}
-
-/* ストーリー全体のコンテナ */
+/* --- 4. 桜咲く地蔵 ストーリーセクション --- */
 .story-container {
-  max-width: 1000px; /* 少し広めに設定 */
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* 各段の基本設定（スマホでは縦並び） */
 .story-row {
   display: flex;
-  flex-direction: column; /* スマホでは縦に並べる */
+  flex-direction: column; /* スマホ：縦並び */
   align-items: center;
   gap: 30px;
-  margin-bottom: 80px; /* 段ごとの間隔 */
+  margin-bottom: 80px;
 }
 
 .story-photo, .story-text {
@@ -203,91 +159,13 @@ footer {
 }
 
 .story-text {
-  text-align: left; /* 文章は左寄せで見やすく */
+  text-align: left;
   padding: 0 10px;
 }
 
-/* 【PC版の設定：768px以上で横並び & 互い違いにする】 */
+/* PC向けストーリー調整 */
 @media (min-width: 768px) {
   .story-row {
-    flex-direction: row; /* 横並びにする */
+    flex-direction: row; /* PC：横並び */
     justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .story-photo, .story-text {
-    width: 60%; /* 左右ほぼ半分ずつ */
-  }
-
-  /* 偶数番目（2, 4, 6...段目）の左右を入れ替える */
-  .story-row:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-
-  .story-text {
-    padding: 20px;
-  }
-}
-
-/* 写真の装飾（お好みで） */
-.story-photo img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* 物語を締めくくる最後の一枚用 */
-.story-final {
-  display: block; /* 横並び設定を解除 */
-  width: 100%;
-  margin: 0 auto 80px;
-  text-align: center;
-}
-
-.story-final .story-photo {
-  width: 100% !important; /* PC版の48%指定を上書き */
-  max-width: 500px;      /* PCでは最大500pxに制限 */
-  margin: 0 auto;        /* 中央寄せ */
-}
-
-.story-final img {
-  width: 100%;           /* 枠に合わせて広がる（スマホでは画面幅に合わせる） */
-  height: auto;
-}
-
-@media (min-width: 768px) {
-  /* 1. 写真と文章の「親要素」の設定 */
-  .story-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* 上端を揃える（重要！） */
-    align-items: flex-start; 
-    gap: 40px;
-    margin-bottom: 100px;
-  }
-
-  /* 2. 文章の「書き出し」の余白を消す */
-  .story-text p {
-    /* ブラウザが自動で入れる上の隙間をゼロにする */
-    margin-top: 0; 
-    /* 行間を整えて読みやすくする */
-    line-height: 1.8; 
-  }
-
-  /* 写真のカラム幅（前回調整した通り） */
-  .story-photo {
-    width: 60%;
-  }
-
-  /* 文章のカラム幅（前回調整した通り） */
-  .story-text {
-    width: 38%;
-  }
-
-  /* 偶数段の入れ替え設定 */
-  .story-row:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-}
+    align-items: flex-start
