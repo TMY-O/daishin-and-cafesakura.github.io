@@ -4,4 +4,8 @@
     <loc>https://tmy-o.github.io/daishin-and-cafesakura.github.io/index.html</loc>
     <priority>1.0</priority>
   </url>
-  </urlset>
+  <url>
+    <loc>https://tmy-o.github.io/daishin-and-cafesakura.github.io/zizo_street.html</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
